@@ -56,7 +56,7 @@ function Counter() {
 ```javascript
 import React, { useState, useCallback } from 'react';
 
-function Child({ onClick }) {
+const Child = React.memo(function Child({ onClick }) {
   console.log('Child component rendered');
 
   return (
@@ -64,7 +64,7 @@ function Child({ onClick }) {
       <button onClick={onClick}>Increment Parent Count</button>
     </div>
   );
-}
+})
 
 function Parent() {
   const [count, setCount] = useState(0);
