@@ -1,0 +1,160 @@
+<!-- 모달 버튼 -->
+<button id="openModalBtn" class="btn btn-primary">모달 열기</button>
+
+<!-- 모달 구조 -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 class="modal-title">모달 제목</h2>
+            <span class="close" id="closeModalBtn">×</span>
+        </div>
+        <div class="modal-body">
+            <p>여기에 모달의 주요 내용이 들어갑니다.</p>
+            <p>추가적인 텍스트나 요소를 넣을 수 있습니다.</p>
+        </div>
+        <div class="modal-footer">
+            <button id="closeFooterBtn" class="btn btn-secondary">닫기</button>
+            <button class="btn btn-primary">확인</button>
+        </div>
+    </div>
+</div>
+
+<style>
+/* 모달 레이아웃 */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    display: flex; /* 항상 flex 유지 */
+    opacity: 0; /* 처음엔 투명 */
+    visibility: hidden; /* 처음엔 보이지 않음 */
+    transition: opacity 0.3s ease; /* 부드러운 전환 효과 */
+}
+
+.modal.show {
+    opacity: 1; /* 보일 때 불투명 */
+    visibility: visible; /* 보일 때 표시 */
+}
+
+.modal-content {
+    background: #fff;
+    width: 400px;
+    max-width: 90%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    position: relative;
+}
+
+.modal-header {
+    padding: 15px 20px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-body {
+    padding: 20px;
+    min-height: 100px;
+}
+
+.modal-footer {
+    padding: 15px 20px;
+    border-top: 1px solid #ddd;
+    text-align: right;
+}
+
+/* 제목 스타일 */
+.modal-title {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+/* 닫기 버튼 스타일 */
+.close {
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+}
+
+.close:hover {
+    color: #000;
+}
+
+/* 버튼 공통 스타일 */
+.btn {
+    padding: 8px 16px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    display: inline-block;
+}
+
+/* 버튼 변형 스타일 */
+.btn-primary {
+    background: #3498db;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #2980b9;
+}
+
+.btn-secondary {
+    background: #ddd;
+    color: #333;
+}
+
+.btn-secondary:hover {
+    background: #ccc;
+}
+
+/* 페이지 기본 설정 */
+body {
+    margin: 0;
+    min-height: 100vh;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('myModal');
+    const openBtn = document.getElementById('openModalBtn');
+    const closeBtn = document.getElementById('closeModalBtn');
+    const closeFooterBtn = document.getElementById('closeFooterBtn');
+
+    // 모달 열기
+    openBtn.addEventListener('click', function() {
+        modal.classList.add('show');
+    });
+
+    // 헤더의 닫기 버튼
+    closeBtn.addEventListener('click', function() {
+        modal.classList.remove('show');
+    });
+
+    // 푸터의 닫기 버튼
+    closeFooterBtn.addEventListener('click', function() {
+        modal.classList.remove('show');
+    });
+
+    // 오버레이 클릭 시 모달 닫기
+    window.addEventListener('click', function(event) {
+        if (event.target === modal) {
+            modal.classList.remove('show');
+        }
+    });
+});
+</script>

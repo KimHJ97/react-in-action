@@ -1,0 +1,39 @@
+<div class="spinner-overlay">
+    <div class="spinner"></div>
+</div>
+
+<style>
+.spinner-overlay {
+    position: fixed; /* 화면 전체를 덮기 위해 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* 반투명 검정색 오버레이 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* 다른 콘텐츠 위에 표시 */
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    position: relative; /* 오버레이 안에서 중앙에 위치 */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 페이지 콘텐츠가 오버레이 뒤에 오도록 */
+body {
+    margin: 0;
+    min-height: 100vh;
+}
+</style>
