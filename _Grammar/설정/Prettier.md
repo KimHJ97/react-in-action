@@ -1,0 +1,71 @@
+# Prettier
+
+## VS Code 설정
+
+- Extension 설치: Prettier
+- Setting 변경
+  - 설정창 열기: `Ctrl` + `,`
+  - Format On Save 옵션 활성화
+  - Default Formatter 옵션 Prettier로 설정
+
+## Prettier 라이브러리 설치
+
+- Prettier와 개발 환경에 맞는 플러그인을 설치한다.
+
+```bash
+npm i -D prettier prettier-plugin-tailwindcss
+```
+
+## Prettier 설정
+
+- 워크스페이스의 최상위 경로에 `.prettierrc` 파일을 생성한다.
+
+```json
+{
+  "plugins": ["prettier-plugin-tailwindcss"]
+}
+```
+
+- **제외 파일 설정(.prettierignore)**
+  - `.gitignore` 파일과 비슷한 역할로 Prettier가 적용되지 않을 파일을 설정한다.
+
+```text
+package.json
+package-lock.json
+```
+
+- **Prettier 옵션들**
+
+```json
+{
+  "arrowParens": "always", // 화살표 함수의 매개변수가 하나일 때 괄호를 사용할지 여부
+  "bracketSpacing": true, // 객체 리터럴에서 중괄호 내부에 공백 삽입할지 여부
+  "endOfLine": "auto", // EoF 방식, OS별로 처리 방식이 다름
+  "htmlWhitespaceSensitivity": "css", // HTML 공백 감도 설정
+  "jsxBracketSameLine": false, // JSX의 마지막 `>`를 다음 줄로 내릴지 여부
+  "jsxSingleQuote": false, // JSX에 singe 쿼테이션 사용 여부
+  "printWidth": 80, //  한 줄에 출력되는 코드의 최대 길이
+  "proseWrap": "preserve", // markdown 텍스트의 줄바꿈 방식 (v1.8.2)
+  "quoteProps": "as-needed" // 객체 속성에 쿼테이션 적용 방식
+  "semi": true, // 세미콜론 사용 여부
+  "singleQuote": true, // single 쿼테이션 사용 여부
+  "tabWidth": 2, // 탭 간격
+  "trailingComma": "all", // 여러 줄을 사용할 때, 후행 콤마 사용 방식
+  "useTabs": false, // 탭 사용 여부
+  "vueIndentScriptAndStyle": true, // Vue 파일의 script와 style 태그의 들여쓰기 여부 (v1.19.0)
+  "parser": '', // 사용할 parser를 지정, 자동으로 지정됨
+  "filepath": '', // parser를 유추할 수 있는 파일을 지정
+  "rangeStart": 0, // 포맷팅을 부분 적용할 파일의 시작 라인 지정
+  "rangeEnd": Infinity, // 포맷팅 부분 적용할 파일의 끝 라인 지정,
+  "requirePragma": false, // 파일 상단에 미리 정의된 주석을 작성하고 Pragma로 포맷팅 사용 여부 지정
+  "insertPragma": false, // 미리 정의된 @format marker의 사용 여부 (v1.8.0)
+  "overrides": [
+    {
+      "files": "*.json",
+      "options": {
+        "printWidth": 200
+      }
+    }
+  ], // 특정 파일별로 옵션을 다르게 지정함, ESLint 방식 사용
+}
+```
